@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/SurfaceViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_aboluteX="-52dp">
+
+        <com.example.facemaker.Face
+            android:id="@+id/face"
+            android:layout_width="match_parent"
+            android:layout_height="800sp" />
+
+        <LinearLayout
+            android:id="@+id/ControlPanelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/SeekbarsLayout"
+                android:layout_width="319dp"
+                android:layout_height="327dp"
+                android:background="#EACB0B"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/RedSBText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Red_Seek" />
+
+                <SeekBar
+                    android:id="@+id/redSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:max="255" />
+
+                <TextView
+                    android:id="@+id/GreenSBText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Green_Seek" />
+
+                <SeekBar
+                    android:id="@+id/greenSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="78dp"
+                    android:max="255" />
+
+                <TextView
+                    android:id="@+id/BlueSBText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Blue_Seek" />
+
+                <SeekBar
+                    android:id="@+id/blueSeekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:max="255" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/RadioButtonLayout"
+                android:layout_width="176dp"
+                android:layout_height="327dp"
+                android:background="#EACB0B"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/RadioButtonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Change" />
+
+                <RadioGroup
+                    android:id="@+id/includeFace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/Eyes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/Eyes" />
+
+                    <RadioButton
+                        android:id="@+id/Skin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Skin" />
+
+                    <RadioButton
+                        android:id="@+id/Hair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Hair" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/HairSelectLayout"
+                android:layout_width="122dp"
+                android:layout_height="327dp"
+                android:background="#EACB0B"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/HairSelectLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/HSelect" />
+
+                <Spinner
+                    android:id="@+id/hairSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/face_options"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ButtonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="336dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/random"
+                    android:layout_width="match_parent"
+                    android:layout_height="336dp"
+                    android:backgroundTint="#F44336"
+                    android:text="@string/Random"
+                    android:translationY="-6sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

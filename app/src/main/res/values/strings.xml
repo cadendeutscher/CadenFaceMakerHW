@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FaceMaker</string>
+    <string name="Green_Seek">Green</string>
+    <string name="Red_Seek">Red</string>
+    <string name="Blue_Seek">Blue</string>
+    <string name="Eyes">Eyes</string>
+    <string name="Hair">Hair</string>
+    <string name="Skin">Skin</string>
+    <string name="Random">Random Face</string>
+    <string name="Change">What would you like to change?</string>
+    <string name="HSelect">Hair Select</string>
+    <string-array name="face_options">
+        <item>Hair 1</item>
+        <item>Hair 2</item>
+        <item>Hair 3</item>
+    </string-array>
+
+</resources>
