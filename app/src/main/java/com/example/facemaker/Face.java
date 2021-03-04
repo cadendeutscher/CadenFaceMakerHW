@@ -28,6 +28,10 @@ public class Face extends SurfaceView {
     private FaceModel faceInfo;
     private Paint hairC;
     private Paint skinC;
+    private float EyeCY;
+    private float lEyeCX;
+    private float rEyeCX;
+    private float mouthAngle;
 
     public Face(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,6 +45,12 @@ public class Face extends SurfaceView {
         faceInfo = new FaceModel();
         skinC = new Paint();
         hairC = new Paint();
+        EyeCY = 700f;
+        lEyeCX = 450f;
+        rEyeCX = 750f;
+        mouthAngle = 180f;
+        
+        
 
         //Randomizes face
         randomize();
@@ -48,6 +58,7 @@ public class Face extends SurfaceView {
     }
 
     /**
+     * randomize
      * Randomize all the variables associated with the face
      */
     public void randomize(){
@@ -63,8 +74,13 @@ public class Face extends SurfaceView {
         faceInfo.skinRed = (int)(Math.random()*255);
         faceInfo.skinGreen = (int)(Math.random()*255);
         faceInfo.hairType = (int)(Math.random()*3);
+
     }
 
+    /**
+     * drawFace
+     * Creates eyes, face, and mouth
+     */
     public void drawFace(Canvas canvas){
         //turn the individual reds, greens, and blues, into an rgb int
         hairColor= Color.rgb(faceInfo.hairRed,faceInfo.hairGreen,faceInfo.hairBlue);
@@ -81,25 +97,38 @@ public class Face extends SurfaceView {
         black.setColor(0xff000000);
 
         /**Head**/
-        canvas.drawOval(200f,400f,1000f,1200f,skinC);
+        canvas.drawOval(lEyeCX - 250,EyeCY - 300,rEyeCX + 250,EyeCY + 500,skinC);
 
         /**EYE**/
         //Eye whites
-        canvas.drawCircle(450f,700f,50,white);
-        canvas.drawCircle(750f,700f,50,white);
+        canvas.drawCircle(lEyeCX,EyeCY,50,white);
+        canvas.drawCircle(rEyeCX,EyeCY,50,white);
 
         //Colored part of eye
-        canvas.drawCircle(450f,700f,30,colorEye);
-        canvas.drawCircle(750f,700f,30,colorEye);
+        canvas.drawCircle(lEyeCX,EyeCY,30,colorEye);
+        canvas.drawCircle(rEyeCX,EyeCY,30,colorEye);
 
         //Pupil
-        canvas.drawCircle(450f,700f,15,black);
-        canvas.drawCircle(750f,700f,15,black);
+        canvas.drawCircle(lEyeCX,EyeCY,15,black);
+        canvas.drawCircle(rEyeCX,EyeCY,15,black);
 
-        /** Hair**/
+
+
+        /**Mouth**/
+        canvas.drawArc(lEyeCX - 75,EyeCY + 150,rEyeCX+75,EyeCY+325,mouthAngle,-mouthAngle,false,black);
+        canvas.drawArc(lEyeCX - 50,EyeCY + 200,rEyeCX + 50,EyeCY+300,mouthAngle,-mouthAngle,false,white);
+
+    }
+
+    /**
+     * drawHair
+     * draws the hair for the head
+     */
+    private void drawHair(Canvas canvas){
+
         //instance variables
-        int cx = 600;
-        int cy = 800;
+        int cx = (int)(rEyeCX-150);
+        int cy = (int)(EyeCY+100);
         int r = 400;
         int a = 0;
         int hairX = (int)(cx + r * Math.cos(a));
@@ -135,7 +164,7 @@ public class Face extends SurfaceView {
             }
         }
 
-         //Hair Style 3
+        //Hair Style 3
         //Draw hair around the head
         else if(hairStyle == 2) {
             for (double i = Math.PI + 1; i < 2 * Math.PI - 1; i += 0.01) {
@@ -147,10 +176,6 @@ public class Face extends SurfaceView {
 
             }
         }
-
-        /**Mouth**/
-        canvas.drawArc(375,850,825,1025,180,-180,false,black);
-        canvas.drawArc(400,900,800,1000,180,-180,false,white);
 
     }
 
@@ -169,6 +194,7 @@ public class Face extends SurfaceView {
     public void onDraw(Canvas canvas){
 
      drawFace(canvas);
+     drawHair(canvas);
 
     }
 
